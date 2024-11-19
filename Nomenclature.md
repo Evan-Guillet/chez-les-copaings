@@ -112,6 +112,11 @@ project-root/
 
 ## Branches GitHub
 
+### Schéma des branches
+![Schéma des branches](https://github.com/user-attachments/assets/20b80a9b-c741-4911-ac3e-2f97dc54257f)  
+
+---
+
 ### Organisation des branches
 1. **Branches principales** :
    - **`main`** : Branche principale représentant l'environnement de **préproduction**.
