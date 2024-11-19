@@ -1,4 +1,4 @@
-# Conventions de Nommage et Nomenclature - Projet Laravel & Vue.js
+# Conventions de Nommage et Nomenclature - Chez les Copaings
 
 Ce document décrit les règles et conventions de nommage adoptées pour garantir la lisibilité, la maintenabilité et la cohérence de ce projet.
 
