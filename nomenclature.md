@@ -11,6 +11,9 @@ Ce document décrit les règles et conventions de nommage adoptées pour garanti
     - [Vue.js & TypeScript](#vuejs--typescript)
     - [Bases de données (MariaDB)](#bases-de-données-mariadb)
 3. [Branches GitHub](#branches-github)
+    - [Organisation des branches](#organisation-des-branches)
+    - [Workflow GitHub](#workflow-github)
+    - [Règles de nommage des branches](#règles-de-nommage-des-branches)
 4. [Langages à utiliser](#langages-à-utiliser)
 5. [Bonnes pratiques](#bonnes-pratiques)
 
@@ -18,9 +21,9 @@ Ce document décrit les règles et conventions de nommage adoptées pour garanti
 
 ## Structure générale du projet
 
-Vue simplifiée de la structure du projet (back) :
-project-root/
+Vue simplifiée de la structure du projet (backend)  
 ```
+project-root/
 ├── app/
 │   ├── Console/
 │   ├── Http/
@@ -109,53 +112,80 @@ project-root/
 
 ## Branches GitHub
 
-Nommer les branches en **anglais** selon le type de travail effectué :
-
+### Organisation des branches
 1. **Branches principales** :
-   - `main` : La branche principale contenant le code stable prêt pour la production.
-   - `develop` : La branche contenant le code en cours de développement.
+   - **`main`** : Branche principale représentant l'environnement de **préproduction**.
+   - **`staging`** : Branche dédiée aux tests et validations.
 
-2. **Branches de fonctionnalités** :
-   - Préfixer par `feature/` suivi d’un nom descriptif en **kebab-case**.
-   - Exemple : `feature/user-authentication`, `feature/dashboard-ui`
+2. **Branches de travail** :
+   - Préfixées selon le domaine :
+     - **`front/`** : Modifications frontend. Exemple : `front/add-login-page`
+     - **`back/`** : Modifications backend. Exemple : `back/user-authentication`
+
+---
+
+### Workflow GitHub
+
+1. **Création de branche** :  
+   Travailler sur une branche dédiée (préfixée par `front/` ou `back/`).
+
+2. **Passage en staging** :  
+   Fusionner la branche dans `staging`. Exécuter des tests pour valider les modifications.
+
+3. **Validation et sauvegarde** :  
+   Avant de fusionner dans `main`, effectuer une sauvegarde pour prévenir tout problème.
+
+4. **Mise à jour de main** :  
+   Fusionner `staging` dans `main` après validation complète.
+
+---
+
+### Règles de nommage des branches
+
+- **Langue** : Les noms doivent être en **anglais**.
+- **Préfixes** :
+  - **`front/`** pour le frontend
+  - **`back/`** pour le backend
+- **Format** : Utiliser le **kebab-case** pour décrire la tâche.  
+  Exemple : `front/add-login-page`, `back/fix-order-api`
+
+---
+
+### Règle de nommage des commits  
+
+- Les **Types** :
+  - **`feat`** pour les ajouts  
+  - **`fix`** pour le problèmes réglés  
+  - **`maj`** pour les mise à jour
+- La **Nomenclature** :  
+  Commit conventionel : `<type>[étendue optionnelle]: <description>`  
+  Exemple : `feat(login): added login button`  
+  Exemple : `fix(logout): fixed logout_button redirection`  
+  Exemple : `maj(login): changed login_button background color`  
 
 ---
 
 ## Langages à utiliser
 
-Appliquer les règles suivantes :
-
-1. **Commits et Merge Requests** :
-   - Utiliser l'**anglais** pour les titres et les descriptions.
-   - Exemple : 
-     - Commit : `Added: account creation`
-     - Merge Request : `Fixed: account page background display`
-2. **Commentaires dans le code** :
-   - Utiliser l'anglais pour les commentaires dans le code source.
-   - Exemple : 
-     ```php
-     // allow users to send messages
-     ```
-3. **Documentation technique** :
-   - Tous les fichiers README / guides d'installation doivent être rédigés en **francais**.
-4. **Noms des variables et fonctions** :
-   - Utiliser des noms descriptifs en **anglais**, quel que soit le langage.
-   - Exemple : 
-     ```typescript
-     const calculateTotalPrice = (cartItems: Item[]): number => { ... }
-     ```
+1. **Commits et Merge Requests** : Rédiger en **anglais**.
+   - Exemple : `Fix: add user authentication`
+2. **Commentaires** : Toujours en anglais, sauf exceptions liées à des règles métier spécifiques.
+   - Exemple : `// Calculate the total price of items`
+3. **Documentation technique** : Préférer le **français** pour les fichiers README et guides d’installation.
+4. **Noms de variables** : Utiliser l’**anglais**.
+   - Exemple : `const calculateTotalPrice = (cartItems: Item[]): number => { ... }`
 
 ---
 
-## Bonnes Pratiques
+## Bonnes pratiques
 
-1. **Cohérence** : Respecter toujours les conventions pour éviter la confusion.
-2. **Lisibilité** : Les noms doivent être descriptifs, explicites et éviter les abréviations non standard.
-3. **Documentation** : Ajouter des commentaires pour les sections complexes.
-4. **Tests** : Organiser les tests avec des noms de fichiers reflétant la classe testée.
-   - Exemple : `UserTest.php` pour tester `User`.
-5. **Git Workflow** :
-   - Préférer les branches descriptives en anglais.
-     - Exemple : `feature/authentication-flow`, `bugfix/fix-order-details`
+1. **Cohérence** : Respecter strictement les conventions établies.
+2. **Lisibilité** : Utiliser des noms explicites, éviter les abréviations non standard.
+3. **Documentation** : Ajouter des commentaires pour expliquer les sections complexes.
+4. **Tests** : Noms de fichiers tests reflétant la classe ou la fonctionnalité testée.
+   - Exemple : `UserTest.php`
+5. **Git Workflow** :  
+   - Utiliser des branches descriptives et bien nommées.
+   - Exemple : `feature/add-payment-method`, `bugfix/fix-cart-bug`
 
 ---
